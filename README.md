@@ -17,3 +17,9 @@ student@rocky2:~/Documents$ xorriso \
   -boot_image any replay \
   -map ./efi-grub.cfg /EFI/BOOT/grub.cfg \
   -map ./bios-grub.cfg /boot/grub2/grub.cfg
+
+
+<img width="561" height="113" alt="boot" src="https://github.com/user-attachments/assets/e50951af-77a1-459f-a7f4-6de5fe7b5ef0" />
+<img width="728" height="294" alt="image" src="https://github.com/user-attachments/assets/2b2b2056-5962-465a-b4e0-fc3bb242f7f3" />
+<img width="306" height="193" alt="image" src="https://github.com/user-attachments/assets/0bbf5b7a-1b16-4ef0-bc6e-ef52f152f8e0" />
+<img width="1040" height="758" alt="image" src="https://github.com/user-attachments/assets/b333b75a-de3c-4d21-a6fd-9b25248dc13f" />
