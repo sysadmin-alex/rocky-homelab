@@ -16,6 +16,7 @@ chronyc tracking || true
 log "ssh"
 if [ -s /home/sysadmin/.ssh/authorized_keys ]; then PASSAUTH=no
 else PASSAUTH=yes; log "WARNING: no SSH key found, leaving password login on"; fi
+mkdir -p /etc/ssh/sshd_config.d
 cat > /etc/ssh/sshd_config.d/00-hardening.conf <<EOF
 PermitRootLogin no
 PasswordAuthentication ${PASSAUTH}
@@ -37,11 +38,12 @@ esac
 
 log "firewall"
 systemctl is-active --quiet firewalld
+firewall-cmd --permanent --add-service=ssh
 firewall-cmd --permanent --remove-service=cockpit || true
 firewall-cmd --reload
 
 log "audit and journald"
-systemctl enable --now auditd
+systemctl enable auditd
 mkdir -p /etc/systemd/journald.conf.d /var/log/journal
 printf '[Journal]\nStorage=persistent\n' > /etc/systemd/journald.conf.d/persistent.conf
 systemctl restart systemd-journald
