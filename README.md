@@ -112,6 +112,7 @@ Reboot once and check that the log shows no second run.
 <img width="668" height="140" alt="restic_init" src="https://github.com/user-attachments/assets/5c2e87ff-7345-46f2-98f7-56e7e2a9be38" />
 <img width="371" height="39" alt="daily_backup_cron" src="https://github.com/user-attachments/assets/539dab41-6530-486f-8786-2752e6a7a027" />
 <img width="467" height="118" alt="config_restic" src="https://github.com/user-attachments/assets/f8b39fca-cf6c-442a-9cc5-6358232bffbe" />
+<img width="851" height="725" alt="image" src="https://github.com/user-attachments/assets/d2cfde4f-fe78-48b4-87eb-e692e84db297" />
 
 
 ## Before you use it
