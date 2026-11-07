@@ -4,6 +4,7 @@ log() { echo "$(date -Is) [firstboot] $*"; }
 
 log "updates"
 dnf -y upgrade
+dnf -y install epel-release
 dnf -y install dnf-automatic
 sed -i 's/^upgrade_type.*/upgrade_type = security/' /etc/dnf/automatic.conf
 systemctl enable --now dnf-automatic-install.timer
