@@ -59,7 +59,7 @@ Boot a VM from `final_kickstart.iso`. The install runs with no input and reboots
 | Network | DHCP, hostname `rocky99`, DNS `1.1.1.1` |
 | Security | SELinux enforcing; firewall enabled with SSH only |
 | Services | `sshd`, `chronyd`, `auditd`, `NetworkManager`, `rsyslog` |
-| Packages | `@^server-product-environment`, `audit`, `rsyslog`, `bash-completion`, `open-vm-tools`, `httpd` |
+| Packages | `@^server-product-environment`, `audit`, `rsyslog`, `bash-completion`, `open-vm-tools` |
 | `%post` | Downloads `setup.sh` to `/usr/local/sbin/`, creates and enables `firstboot.service` |
 
 `firstboot.service` runs `setup.sh` once. It starts after the network and `firewalld`, writes output to `/var/log/firstboot_script.log`, and creates `/var/lib/firstboot.done` on success so it does not run again. If the script fails, it retries on the next boot.
@@ -112,10 +112,3 @@ Reboot once and check that the log shows no second run.
 
 - Replace the SSH public key and the `--password` hash in `ks.cfg` with your own. Generate a hash with `openssl passwd -6`. Never commit a real password hash.
 - `setup.sh` is fetched from the `main` branch for simplicity. For production, pin it to a commit with a checksum, or use `ansible-pull` with signed commits.
-
-## Roadmap
-
-- [ ] Move hardening into Ansible roles and run them with `ansible-pull`
-- [ ] Add `ansible-lint` and `ksvalidator` checks with GitHub Actions
-- [ ] Add OpenSCAP (CIS) scan results before and after hardening
-- [ ] Add backups and monitoring
