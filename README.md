@@ -108,6 +108,12 @@ Reboot once and check that the log shows no second run.
 <img width="764" height="807" alt="image" src="https://github.com/user-attachments/assets/5d6c80c9-2caf-4b4c-8719-7034bddbda84" />
 <img width="1179" height="645" alt="image" src="https://github.com/user-attachments/assets/42b269e2-8104-4715-ae33-7693af92c855" />
 
+<img width="640" height="165" alt="restic_install" src="https://github.com/user-attachments/assets/a24cdf31-0b3d-420e-9ece-6a26c5fe9964" />
+<img width="668" height="140" alt="restic_init" src="https://github.com/user-attachments/assets/5c2e87ff-7345-46f2-98f7-56e7e2a9be38" />
+<img width="371" height="39" alt="daily_backup_cron" src="https://github.com/user-attachments/assets/539dab41-6530-486f-8786-2752e6a7a027" />
+<img width="467" height="118" alt="config_restic" src="https://github.com/user-attachments/assets/f8b39fca-cf6c-442a-9cc5-6358232bffbe" />
+
+
 ## Before you use it
 
 - Replace the SSH public key and the `--password` hash in `ks.cfg` with your own. Generate a hash with `openssl passwd -6`. Never commit a real password hash.
