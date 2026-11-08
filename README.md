@@ -1,7 +1,6 @@
 # rocky-homelab
 
-Unattended **Rocky Linux 10.2** install. A Kickstart file is baked into a bootable ISO with `mkksiso`. After the install, a first-boot script hardens the system and logs every step.
-
+Unattended **Rocky Linux 10.2** install. A Kickstart file is baked into a bootable ISO with `mkksiso`. After the install, a first-boot script hardens the system and logs every step. Rocky Linux is a clone of RHEL bug-for-bug compatible
 ## What it does
 
 1. Builds a custom ISO that installs Rocky Linux with no prompts (`ks.cfg`).
