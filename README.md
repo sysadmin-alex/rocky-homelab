@@ -97,37 +97,63 @@ Reboot once and check that the log shows no second run.
 ## Screenshots
 After making the Final Kickstart iso I plugged it in a VM with a 23GB SATA disk, 2.6GB RAM and 4 CPU cores along with NAT
 
-Hands-Free Installation
-<img width="1040" height="758" alt="image" src="https://github.com/user-attachments/assets/b333b75a-de3c-4d21-a6fd-9b25248dc13f" />
-<img width="541" height="151" alt="image" src="https://github.com/user-attachments/assets/0ae933c5-2e4b-4373-93cd-016a5ff569b3" />
+# Automated Hardening & Backup Pipeline
 
-Script is Enabled
-<img width="665" height="113" alt="image" src="https://github.com/user-attachments/assets/64992ddb-da10-41ca-b882-46f9b9b68ee6" />
-This is the Script that was downloaded from the kickstart %post-%end curl
-<img width="319" height="67" alt="image" src="https://github.com/user-attachments/assets/d9590648-7eb5-4249-a78d-be3ab12a5814" />
+A streamlined setup for hands-free OS installation, automated system hardening, and secure local backups using Restic.
 
-My public SSH key was automatically added from the kickstart. (Watch out with ssh and kickstart because you could lock yourself out)
-<img width="1363" height="609" alt="image" src="https://github.com/user-attachments/assets/7f51b5bf-43bd-48be-8040-1f6c576a7a9c" />
+---
 
-These are the hardening script's logs
-<img width="764" height="807" alt="image" src="https://github.com/user-attachments/assets/5d6c80c9-2caf-4b4c-8719-7034bddbda84" />
-<img width="1179" height="645" alt="image" src="https://github.com/user-attachments/assets/42b269e2-8104-4715-ae33-7693af92c855" />
+## 1. Hands-Free Installation & Kickstart
 
-Now lets install and configure automated backups with Restic!
-<img width="640" height="165" alt="restic_install" src="https://github.com/user-attachments/assets/a24cdf31-0b3d-420e-9ece-6a26c5fe9964" />
-<img width="668" height="140" alt="restic_init" src="https://github.com/user-attachments/assets/5c2e87ff-7345-46f2-98f7-56e7e2a9be38" />
+The installation process is fully automated via Kickstart. During the `%post` phase, configuration scripts are fetched and executed automatically, including setting up your public SSH key for secure remote access.
 
-<img width="628" height="535" alt="image" src="https://github.com/user-attachments/assets/1d216bd3-7ba6-4de9-b160-8e515bf53a67" />
+> **Note:** Always double-check your SSH configurations during kickstart deployments to prevent accidental lockouts.
 
+| Hands-Free Setup | Post-Install Script Execution |
+| :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/b333b75a-de3c-4d21-a6fd-9b25248dc13f" width="480" /> | <img src="https://github.com/user-attachments/assets/0ae933c5-2e4b-4373-93cd-016a5ff569b3" width="480" /> |
 
-This is the script in /usr/local/sbin/
-<img width="592" height="421" alt="image" src="https://github.com/user-attachments/assets/04658c7b-a06d-49aa-9b9b-1b35bcddbc31" />
+* **Script Status:** Active and executing via curl payload in the kickstart `%post-%end` block.
+* **SSH Integration:** Automated injection of authorized public keys.
 
-<img width="467" height="118" alt="config_restic" src="https://github.com/user-attachments/assets/f8b39fca-cf6c-442a-9cc5-6358232bffbe" />
-<img width="851" height="725" alt="image" src="https://github.com/user-attachments/assets/d2cfde4f-fe78-48b4-87eb-e692e84db297" />
+---
 
+## 2. System Hardening Logs
 
-## Before you use it
+Once the system boots, the hardening script runs to lock down the environment. Below are sample execution logs showing the hardening tasks being applied:
 
-- Replace the SSH public key and the `--password` hash in `ks.cfg` with your own. Generate a hash with `openssl passwd -6`. Never commit a real password hash.
-- `setup.sh` is fetched from the `main` branch for simplicity. For production, pin it to a commit with a checksum, or use `ansible-pull` with signed commits.
+<img src="https://github.com/user-attachments/assets/5d6c80c9-2caf-4b4c-8719-7034bddbda84" alt="Hardening logs part 1" width="700" />
+
+<img src="https://github.com/user-attachments/assets/42b269e2-8104-4715-ae33-7693af92c855" alt="Hardening logs part 2" width="700" />
+
+---
+
+## 3. Automated Backups with Restic
+
+Backups are handled via **Restic**, configured to run seamlessly on the system.
+
+### Installation & Initialization
+```bash
+# Install Restic
+dnf install restic -y # or your package manager equivalent
+
+# Initialize the backup repository
+restic init -r /opt/backups/my-repo
+```
+
+### Backup Script (`/usr/local/sbin/backup.sh`)
+The custom backup script handles repository snapshots and cleanup:
+
+<img src="https://github.com/user-attachments/assets/ba1dd895-2d76-46e0-9ceb-250a6aafd159" alt="backup.sh script" width="550" />
+
+### Manual Execution & Verification
+Running the backup script manually confirms snapshots are successfully created and stored:
+
+<img src="https://github.com/user-attachments/assets/d2cfde4f-fe78-48b4-87eb-e692e84db297" alt="Manual backup execution" width="700" />
+
+### Restoring from Backup
+To restore your system or files from the latest snapshot, run:
+
+```bash
+restic -r /opt/backups/my-repo restore latest --target /
+```
