@@ -95,12 +95,9 @@ systemctl list-timers | grep dnf
 Reboot once and check that the log shows no second run.
 
 ## Screenshots
+After making the Final Kickstart iso I plugged it in a VM with a 23GB SATA disk, 2.6GB RAM and 4 CPU cores along with NAT
 
-Making the ISO
-<img width="975" height="79" alt="image" src="https://github.com/user-attachments/assets/11092fd9-3b00-4a8a-a52b-11c4ff7d8105" />
-<img width="1088" height="56" alt="image" src="https://github.com/user-attachments/assets/34a970fd-beeb-4379-8160-b8c6b8156c16" />
-
-Installation
+Hands-Free Installation
 <img width="1040" height="758" alt="image" src="https://github.com/user-attachments/assets/b333b75a-de3c-4d21-a6fd-9b25248dc13f" />
 <img width="541" height="151" alt="image" src="https://github.com/user-attachments/assets/0ae933c5-2e4b-4373-93cd-016a5ff569b3" />
 
@@ -119,7 +116,13 @@ These are the hardening script's logs
 Now lets install and configure automated backups with Restic!
 <img width="640" height="165" alt="restic_install" src="https://github.com/user-attachments/assets/a24cdf31-0b3d-420e-9ece-6a26c5fe9964" />
 <img width="668" height="140" alt="restic_init" src="https://github.com/user-attachments/assets/5c2e87ff-7345-46f2-98f7-56e7e2a9be38" />
-<img width="371" height="39" alt="daily_backup_cron" src="https://github.com/user-attachments/assets/539dab41-6530-486f-8786-2752e6a7a027" />
+
+<img width="628" height="535" alt="image" src="https://github.com/user-attachments/assets/1d216bd3-7ba6-4de9-b160-8e515bf53a67" />
+
+
+This is the script in /usr/local/sbin/
+<img width="592" height="421" alt="image" src="https://github.com/user-attachments/assets/04658c7b-a06d-49aa-9b9b-1b35bcddbc31" />
+
 <img width="467" height="118" alt="config_restic" src="https://github.com/user-attachments/assets/f8b39fca-cf6c-442a-9cc5-6358232bffbe" />
 <img width="851" height="725" alt="image" src="https://github.com/user-attachments/assets/d2cfde4f-fe78-48b4-87eb-e692e84db297" />
 
