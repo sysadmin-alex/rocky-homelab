@@ -23,6 +23,7 @@ flowchart LR
 |---|---|
 | `ks.cfg` | Kickstart file: disks, user, network, packages, base security settings |
 | `setup.sh` | First-boot hardening script, run once after the install |
+| `backup.sh` | A backup script that selects what to include in a backup, logs it and then hands it over to restic |
 
 ## Build the ISO
 
