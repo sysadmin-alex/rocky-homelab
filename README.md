@@ -1,6 +1,6 @@
 # rocky-homelab
 
-Unattended **Rocky Linux 10.2** installs. A Kickstart file is baked into a bootable ISO with `mkksiso`. After the install, a first-boot script hardens the system and logs every step.
+Unattended **Rocky Linux 10.2** install. A Kickstart file is baked into a bootable ISO with `mkksiso`. After the install, a first-boot script hardens the system and logs every step.
 
 ## What it does
 
@@ -35,6 +35,9 @@ sudo mkksiso --ks ks.cfg Rocky-10.2-x86_64-boot.iso ./auto.iso
 xorriso -osirrox on -indev auto.iso \
   -extract /EFI/BOOT/grub.cfg efi-grub.cfg \
   -extract /boot/grub2/grub.cfg bios-grub.cfg
+
+#Skip grub menu with sed edit
+sed -i 's/^set timeout=.*/set timeout=5/; s/^set default=.*/set default="0"/' efi-grub.cfg bios-grub.cfg
 
 # Repack the ISO with the edited grub configs
 xorriso \
@@ -93,14 +96,19 @@ Reboot once and check that the log shows no second run.
 
 ## Screenshots
 
-<!-- Add a short caption above each image: what step it shows -->
-
+Making the ISO
 <img width="975" height="79" alt="image" src="https://github.com/user-attachments/assets/11092fd9-3b00-4a8a-a52b-11c4ff7d8105" />
-<img width="975" height="70" alt="image" src="https://github.com/user-attachments/assets/c5cd4849-79d7-423b-b116-e67678ef31f2" />
 <img width="1088" height="56" alt="image" src="https://github.com/user-attachments/assets/34a970fd-beeb-4379-8160-b8c6b8156c16" />
+
+
 <img width="561" height="113" alt="boot" src="https://github.com/user-attachments/assets/e50951af-77a1-459f-a7f4-6de5fe7b5ef0" />
+
+
 <img width="728" height="294" alt="image" src="https://github.com/user-attachments/assets/2b2b2056-5962-465a-b4e0-fc3bb242f7f3" />
+
+VM Settings
 <img width="306" height="193" alt="image" src="https://github.com/user-attachments/assets/0bbf5b7a-1b16-4ef0-bc6e-ef52f152f8e0" />
+
 <img width="1040" height="758" alt="image" src="https://github.com/user-attachments/assets/b333b75a-de3c-4d21-a6fd-9b25248dc13f" />
 <img width="319" height="67" alt="image" src="https://github.com/user-attachments/assets/d9590648-7eb5-4249-a78d-be3ab12a5814" />
 <img width="665" height="113" alt="image" src="https://github.com/user-attachments/assets/64992ddb-da10-41ca-b882-46f9b9b68ee6" />
