@@ -100,18 +100,23 @@ Making the ISO
 <img width="975" height="79" alt="image" src="https://github.com/user-attachments/assets/11092fd9-3b00-4a8a-a52b-11c4ff7d8105" />
 <img width="1088" height="56" alt="image" src="https://github.com/user-attachments/assets/34a970fd-beeb-4379-8160-b8c6b8156c16" />
 
-
+Installation
 <img width="1040" height="758" alt="image" src="https://github.com/user-attachments/assets/b333b75a-de3c-4d21-a6fd-9b25248dc13f" />
-
 <img width="541" height="151" alt="image" src="https://github.com/user-attachments/assets/0ae933c5-2e4b-4373-93cd-016a5ff569b3" />
 
-
-<img width="319" height="67" alt="image" src="https://github.com/user-attachments/assets/d9590648-7eb5-4249-a78d-be3ab12a5814" />
+Script is Enabled
 <img width="665" height="113" alt="image" src="https://github.com/user-attachments/assets/64992ddb-da10-41ca-b882-46f9b9b68ee6" />
+This is the Script that was downloaded from the kickstart %post-%end curl
+<img width="319" height="67" alt="image" src="https://github.com/user-attachments/assets/d9590648-7eb5-4249-a78d-be3ab12a5814" />
+
+My public SSH key was automatically added from the kickstart. (Watch out with ssh and kickstart because you could lock yourself out)
 <img width="1363" height="609" alt="image" src="https://github.com/user-attachments/assets/7f51b5bf-43bd-48be-8040-1f6c576a7a9c" />
+
+These are the hardening script's logs
 <img width="764" height="807" alt="image" src="https://github.com/user-attachments/assets/5d6c80c9-2caf-4b4c-8719-7034bddbda84" />
 <img width="1179" height="645" alt="image" src="https://github.com/user-attachments/assets/42b269e2-8104-4715-ae33-7693af92c855" />
 
+Now lets install and configure automated backups with Restic!
 <img width="640" height="165" alt="restic_install" src="https://github.com/user-attachments/assets/a24cdf31-0b3d-420e-9ece-6a26c5fe9964" />
 <img width="668" height="140" alt="restic_init" src="https://github.com/user-attachments/assets/5c2e87ff-7345-46f2-98f7-56e7e2a9be38" />
 <img width="371" height="39" alt="daily_backup_cron" src="https://github.com/user-attachments/assets/539dab41-6530-486f-8786-2752e6a7a027" />
