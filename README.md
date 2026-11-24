@@ -161,6 +161,6 @@ Restore into a scratch directory first and inspect the result:
 restic -r /opt/backups/my-repo restore latest --target /tmp/restore-test
 ```
 
-Restoring with `--target /` overwrites live files, so only do that when you really mean to replace the system state.
+Restoring with `--target /` overwrites live files, so only do that when you really mean to replace the system state..
 
 > **Limitation:** the repository above is on the same disk as the system. That protects against deleted or corrupted files, but not against disk failure. For a real backup, add a second copy elsewhere (another machine over SFTP, or object storage) and run `restic check` regularly.
